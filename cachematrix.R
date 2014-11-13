@@ -10,18 +10,18 @@
 #    that can cache its inverse.
 makeCacheMatrix <- function(x = matrix()) {
 	s <- NULL
-	# define a set function to set the cached value
+	# define a set function to set the matrix
 	set <- function(y) {
 		x <<- y
 		s <<- NULL
 	}
-	# get the raw matrix
+	# get the matrix
 	get <- function() x
 	
-	# set the cached value
+	# set the inverse matrix
 	setsolve <- function(solve) s <<- solve
 	
-	# return the cached value
+	# return the inverse matrix
 	getsolve <- function() s
 	
 	# define interface
@@ -48,7 +48,7 @@ cacheSolve <- function(x, ...) {
                 return(s)
 	}
         
-        # get the raw matrix
+        # get the matrix
         data <- x$get()
         
         # calculate the inverse
@@ -57,6 +57,6 @@ cacheSolve <- function(x, ...) {
         # set the result to the cache
         x$setsolve(s)
         
-        # return value
+        # return inverse matrix
         s
 }
